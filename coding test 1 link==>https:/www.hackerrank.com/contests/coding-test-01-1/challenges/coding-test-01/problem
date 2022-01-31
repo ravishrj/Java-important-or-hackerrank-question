@@ -1,0 +1,47 @@
+code  link==>https://www.hackerrank.com/contests/coding-test-01-1/challenges/coding-test-01/problem
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int input1=sc.nextInt();
+        int input2=sc.nextInt();
+        int input3=sc.nextInt(); 
+        if((input1<100 || input1>999) || (input2<100 || input2>999) || (input3<100 || input3>999))
+        {
+            System.out.println("Invalid Number");
+        }
+        else{
+        int[] arr=new int[3];
+        int minu=9,mind=9,mint=9,maxd=0;
+        arr[0]=input1;
+        arr[1]=input2;
+        arr[2]=input3;
+        for(int input:arr)
+        {
+            int cnt=1;
+            while(input>0)
+            {
+                int n=input%10;
+                
+                if(minu>n&&cnt==1)
+                    minu=n;
+                if(mind>n&&cnt==2)
+                    mind=n;
+                if(mint>n && cnt==3)
+                    mint=n;
+                if(maxd<n)
+                    maxd=n;
+                input=input/10;
+                cnt++;
+                              
+            }
+        }
+         int ans=(minu*1)+(mind*10)+(mint*100)+(maxd*1000);
+        System.out.println(ans);
+            } 
+    }
+}
