@@ -1,0 +1,46 @@
+code link==>https://www.hackerrank.com/contests/coding-test-01-1/challenges/number-based-problem-nth-prime-number-1/submissions/code/1341310147
+
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    public static boolean isPrime(int n)
+    {
+        for(int i=2;i<n;i++) 
+         {
+             if(n%i==0)
+              return false;
+          
+          }
+        
+            return true;
+    }
+    
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int count=1;
+        int number=0;
+        
+       int i=2;
+        if(n<=0 || n>=1000)
+            System.out.println("Invalid Input");
+        else{
+        while(count<=n)    
+        {
+            
+            
+            if(isPrime(i)==true)
+            {
+                number=i;
+                count++;
+            }
+            i++;
+        }
+         System.out.println(number);   
+     }
+        
+    }
+}
