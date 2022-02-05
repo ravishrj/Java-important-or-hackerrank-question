@@ -1,0 +1,71 @@
+Special Reversal
+  CODE OF GEEKS  6
+You will be given a string of characters and special characters, you task is to reverse the string leaving special characters in same place.
+
+Input : 
+
+First Input : String
+
+Output : Special Reverse of string
+
+
+
+ 
+Sample Testcases :
+
+I/P 1:
+
+dsd$^f#
+
+O/P 1:
+
+fds$^d#
+
+
+
+ANSWER
+
+
+============================================================================================================================================================================================
+import java.io.*;
+import java.util.*;
+
+import javax.lang.model.util.ElementScanner14;
+public class SpecialReversal {
+     public static void main(String[] args)
+      {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("enter String :");
+        String str=sc.next();
+        char[]  ch=str.toCharArray();
+        int i=0;
+        int j=ch.length-1;
+        while(i<j)
+        {
+            if(((ch[i]>='a'&&ch[i]<='z')||(ch[i]>='A'&&ch[i]<='Z'))&&((ch[j]>='a'&&ch[j]<='z')||(ch[j]>='A'&&ch[j]<='Z')))
+            {
+                char temp=ch[i];
+                ch[i]=ch[j];
+                ch[j]=temp;
+                i++;
+                j--;
+                continue;
+            }
+                else if((ch[i]>='a'&&ch[i]<='z')||(ch[i]>='A'&&ch[i]<='Z'))
+                j--;
+                else if((ch[j]>='a'&&ch[j]<='z')||(ch[j]>='A'&&ch[j]<='Z'))
+                i++;
+                else
+                {
+                    i++;
+                    j--;
+                }
+        }
+        String ans="";
+        for(int t=0;t<ch.length;t++)
+        {
+           ans=ans+String.valueOf(ch[t]);
+        }
+        System.out.println("ans is:"+ans);
+    }
+}
