@@ -1,0 +1,71 @@
+4 Digit OTP
+  CODE OF GEEKS  7
+You are here : InfyTQ Archive >> InfyTQ Coding Problems
+
+
+ 
+You will be given a number in the form of string, extract out digits at odd places, square & merge them. First 4 digits will be the required OTP.
+
+Input : 
+
+First Input : String
+
+Output : 4 digit OTP
+
+Sample Testcases :
+
+I/P 1:
+
+34567
+
+O/P 1:
+
+1636
+
+
+ANSWER
+==================================================================================================================================
+import java.io.*;
+import java.util.*;
+public class FourDigitOtp {
+    public static void main(String[] args) {
+    Scanner sc=new Scanner(System.in);
+    System.out.println("enter number:");
+    String number=sc.next();
+    int num=Integer.parseInt(number);
+    ArrayList<Integer> arr=new ArrayList<>();
+    while(num>0)
+    {
+       int rem=num%10;
+       num=num/10;
+       arr.add(rem);
+    }
+    int j=1;
+    String ans="";
+    for(int i=arr.size()-2;i>=0;i--)
+    {
+       if(j%2!=0&&(ans.length()<4))
+       {
+           int y=arr.get(i);
+          int x=y*y;
+          if(ans.length()==3)
+          {
+             int m=0;
+             while(x>0)
+             {
+                m=m%10;
+                x=x/10;
+             }
+             x=m;
+          }
+          ans=ans+String.valueOf(x);
+
+       }
+       j++;
+    }
+    System.out.println("ans is:");
+    System.out.println(ans);
+    }
+    
+    
+}
