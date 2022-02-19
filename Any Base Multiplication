@@ -1,0 +1,92 @@
+Any Base Multiplication
+Easy
+
+1. You are given a base b.
+2. You are given two numbers n1 and n2 of base b.
+3. You are required to multiply n1 and n2 and print the value.
+
+Constraints
+2 <= b <= 10
+0 <= n1 <= 10000
+0 <= n2 <= 10000
+
+Format
+Input
+A base b
+A number n1
+A number n2
+
+Output
+A number of base b equal in value to n2 * n1.
+
+Example
+Sample Input
+
+5
+1220
+31
+
+Sample Output
+43320
+
+=========================================================================================================================================================================
+
+import java.util.*;
+
+public class Main{
+
+public static void main(String[] args) {
+    Scanner scn = new Scanner(System.in);
+    int b = scn.nextInt();
+    int n1 = scn.nextInt();
+    int n2 = scn.nextInt();
+
+    int d = getProduct(b, n1, n2);
+    System.out.println(d);
+ }
+ public static int getSum(int b, int n1, int n2){
+      int result = 0;
+      int carry = 0, multiplier = 1;
+      while (n1 > 0 || n2 > 0 || carry > 0) {
+      int digit1 = n1 % 10;
+      int digit2 = n2 % 10;
+      int sum = (digit1 + digit2 + carry);
+      carry = sum / b;
+      int value = sum % b;
+
+      result += multiplier * value;
+      multiplier *= 10;
+
+      n1 /= 10;
+      n2 /= 10;
+    }
+
+    return result;
+   }
+
+ public static int getProduct(int b, int n1, int n2){
+     int ans=0,p=1;
+     while(n2>0)
+     {
+         int n=n1;
+         int rem2=n2%10;
+         n2=n2/10;
+         int c=0,sum=0,m=1;
+         while(n>0||c>0)
+         {
+             int rem1=n%10;
+             int mul=rem1*rem2+c;
+             c=mul/b;
+             int val=mul%b;
+             sum=sum+val*m;
+             m=m*10;
+             n=n/10; 
+         }
+         ans=getSum(b,ans,sum*p);
+         p=p*10;
+         
+     }
+    return ans;
+ }
+
+}
